@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Eventos - UTP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/eventos.css">
+</head>
+<body class="dark-theme">
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/WWLX7r1/logo-utp-rgb-2022.png" alt="Logo UTP" class="logo">
+                <h1>Eventos UTP</h1>
+            </div>
+            <nav>
+                <a href="/admin_eventos.html" class="nav-link active">Administrar Eventos</a>
+                <a href="/logout" class="nav-link">Cerrar Sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="events-container">
+        <div class="admin-controls">
+            <button class="create-event-button" id="createEventButton">Crear Nuevo Evento</button>
+        </div>
+        <div class="events-list">
+            <!-- Los eventos se cargarán aquí dinámicamente -->
+        </div>
+    </main>
+
+    <!-- Modal para crear/editar eventos -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Crear Nuevo Evento</h2>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required placeholder="Ingrese el título del evento">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required placeholder="Describa los detalles del evento"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required min="{{ today }}">
+                </div>
+                <div class="form-group">
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+                </div>
+                <div class="form-group">
+                    <label for="lugar">Lugar:</label>
+                    <input type="text" id="lugar" name="lugar" required placeholder="Ingrese la ubicación del evento">
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" name="imagen" accept="image/*">
+                </div>
+                <button type="submit" class="submit-button">Crear Evento</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin_eventos.js"></script>
+</body>
+</html>

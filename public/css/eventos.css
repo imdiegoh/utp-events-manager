@@ -1,0 +1,704 @@
+/* eventos.css */
+
+/* Tema oscuro y fondo */
+.dark-theme {
+    background-image: url('https://i.ibb.co/1LjcF9S/utp.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.85);
+    background-blend-mode: overlay;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Header */
+.header {
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 2rem;
+}
+
+.header-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: max-content;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-container h1 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link.active:hover {
+    background: #45a049;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+/* Navegación */
+.main-nav {
+    flex: 1;
+    margin: 0 2rem;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00d4ff;
+    transition: width 0.3s ease;
+}
+
+.nav-list a:hover::after,
+.nav-list a.active::after {
+    width: 100%;
+}
+
+/* Botón de cerrar sesión */
+.logout-button {
+    background-color: #00d4ff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #00bfe6;
+}
+
+/* Contenedor principal */
+.events-container {
+    padding: 2rem;
+    margin-top: 80px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-controls {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    margin-bottom: 2rem;
+}
+
+.create-event-button {
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-event-button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.create-event-button:active {
+    transform: translateY(0);
+}
+
+.events-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Estilos comunes para las tarjetas de eventos */
+.event-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1rem;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.event-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.event-title {
+    color: #333;
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.event-info p {
+    color: #666;
+    font-size: 0.9em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-info i {
+    color: #666;
+    width: 16px;
+    text-align: center;
+}
+
+.event-description {
+    color: #555;
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* Estilos específicos para botones de eventos */
+.delete-event-button,
+.join-event-button {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    color: white;
+}
+
+.delete-event-button {
+    background: #dc3545;
+}
+
+.delete-event-button:hover {
+    background: #c82333;
+}
+
+.join-event-button {
+    background: #4CAF50;
+}
+
+.join-event-button:hover {
+    background: #45a049;
+}
+
+.join-event-button.joined {
+    background: #dc3545;
+}
+
+.join-event-button.joined:hover {
+    background: #c82333;
+}
+
+.no-events {
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Estado vacío */
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 300px;
+    text-align: center;
+    color: #666;
+    font-size: 1.1em;
+    padding: 20px;
+}
+
+.message-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.empty-state p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Modal y Formulario */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1100;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #333;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    max-height: 95vh;
+    margin: 0;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #333;
+}
+
+#eventForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#eventForm .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#eventForm label {
+    color: #444;
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+#eventForm input,
+#eventForm textarea {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+#eventForm textarea {
+    min-height: 70px;
+    resize: vertical;
+    max-height: 120px;
+}
+
+#eventForm input:focus,
+#eventForm textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+#eventForm input[type="file"] {
+    padding: 8px;
+    border: 2px dashed #ddd;
+    background: #f8f8f8;
+    cursor: pointer;
+}
+
+#eventForm input[type="file"]:hover {
+    border-color: #4CAF50;
+    background: #f0f8f0;
+}
+
+#eventForm .submit-button {
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+#eventForm .submit-button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+#eventForm .submit-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .event-card {
+        width: 280px;
+        padding: 0.875rem;
+    }
+
+    .event-image {
+        height: 140px;
+    }
+
+    .event-title {
+        font-size: 1.1em;
+    }
+
+    .event-info p {
+        font-size: 0.85em;
+    }
+
+    .event-description {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        width: 260px;
+    }
+    
+    .events-list {
+        padding: 1rem;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        width: 100%;
+        max-width: 320px;
+        padding: 0.75rem;
+    }
+
+    .event-image {
+        height: 130px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .event-card {
+        width: calc(50% - 10px);
+    }
+    
+    .no-events {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        width: 100%;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .no-events {
+        max-width: 90%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0.5rem 1rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .logo-container {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .logo-container h1 {
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        height: 35px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .events-container {
+        padding: 1rem;
+    }
+
+    .admin-controls {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-container {
+        padding: 0.8rem;
+    }
+
+    .admin-controls {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        padding: 15px;
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    .modal-content h2 {
+        font-size: 1.2em;
+        margin-bottom: 12px;
+    }
+
+    #eventForm {
+        gap: 10px;
+    }
+
+    #eventForm label {
+        font-size: 0.8em;
+    }
+
+    #eventForm input,
+    #eventForm textarea {
+        padding: 7px 10px;
+        font-size: 0.85em;
+    }
+
+    #eventForm textarea {
+        min-height: 60px;
+        max-height: 100px;
+    }
+
+    #eventForm .submit-button {
+        padding: 8px;
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 12px;
+        width: 98%;
+        max-height: 98vh;
+    }
+
+    .modal-content h2 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .close {
+        right: 12px;
+        top: 8px;
+        font-size: 22px;
+    }
+
+    #eventForm {
+        gap: 8px;
+    }
+
+    #eventForm input,
+    #eventForm textarea {
+        padding: 6px 8px;
+        font-size: 0.8em;
+    }
+
+    #eventForm textarea {
+        min-height: 50px;
+        max-height: 80px;
+    }
+
+    #eventForm .submit-button {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+}
