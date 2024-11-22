@@ -60,9 +60,9 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     width: 100%;
-    max-width: 360px;
+    max-width: 400px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -83,7 +83,7 @@ body {
 .signup-form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
 .login-form h1 {
@@ -96,8 +96,8 @@ body {
 
 .signup-form h1 {
     color: #333;
-    font-size: 1.35em;
-    margin-bottom: 4px;
+    font-size: 1.25em;
+    margin-bottom: 8px;
     text-align: center;
     font-weight: 600;
 }
@@ -112,8 +112,8 @@ body {
 .signup-form .form-group {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    margin-bottom: 2px;
+    gap: 1px;
+    margin-bottom: 4px;
 }
 
 .login-form label {
@@ -124,9 +124,9 @@ body {
 
 .signup-form label {
     color: #555;
-    font-size: 0.78em;
+    font-size: 0.75em;
     font-weight: 500;
-    margin-bottom: 1px;
+    margin-bottom: 0;
 }
 
 .login-form input {
@@ -140,14 +140,14 @@ body {
 }
 
 .signup-form input {
-    padding: 5px 12px;
+    padding: 4px 10px;
     border: 1px solid #eee;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 0.85em;
     transition: all 0.3s ease;
     background: white;
     color: #333;
-    height: 30px;
+    height: 28px;
 }
 
 .login-form input:focus {
@@ -199,15 +199,15 @@ body {
 .signup-form .submit-button {
     background: #4CAF50;
     color: white;
-    padding: 7px 14px;
+    padding: 8px 16px;
     border: none;
     border-radius: 8px;
-    font-size: 0.85em;
+    font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 6px;
-    height: 32px;
+    margin-top: 8px;
+    height: 35px;
 }
 
 .login-form .submit-button:hover {
@@ -238,6 +238,12 @@ body {
     font-size: 0.75em;
 }
 
+.signup-form .login-link {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 8px;
+}
+
 .register-link a, .login-link a {
     color: #4CAF50;
     text-decoration: none;
@@ -258,9 +264,8 @@ body {
     }
 
     .signup-container {
-        padding: 15px;
+        padding: 12px;
         margin: 10px;
-        max-height: 90vh;
     }
 
     .container {
@@ -273,8 +278,8 @@ body {
     }
 
     .signup-form h1 {
-        font-size: 1.3em;
-        margin-bottom: 8px;
+        font-size: 1.2em;
+        margin-bottom: 6px;
     }
 
     .login-form .form-group {
@@ -292,8 +297,7 @@ body {
     }
 
     .signup-form input {
-        padding: 5px 10px;
-        height: 28px;
+        height: 26px;
     }
 
     .login-form .submit-button {
@@ -302,9 +306,7 @@ body {
     }
 
     .signup-form .submit-button {
-        padding: 6px 12px;
-        margin-top: 5px;
-        height: 30px;
+        height: 32px;
     }
 }
 
@@ -376,6 +378,13 @@ body {
     .form-group input {
         padding: 10px;
         font-size: 14px;
+    }
+}
+
+@media (min-height: 600px) {
+    .signup-container {
+        max-height: 95vh;
+        overflow-y: auto;
     }
 }
 
