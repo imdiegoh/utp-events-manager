@@ -10,7 +10,7 @@
 </head>
 <body class="signup-page">
     <video autoplay muted loop id="background-video">
-        <source src="Video/Video Proyecto UTP 2.mp4" type="video/mp4">
+        <source src="Video/Video Proyecto UTP.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
     </video>
     <div class="video-overlay"></div>
@@ -87,5 +87,21 @@
         </div>
     </div>
     <script src="js/signup-scripts.js"></script>
+    <script>
+        // Cargar el tiempo guardado del video
+        window.addEventListener('load', function() {
+            const video = document.getElementById('background-video');
+            const savedTime = localStorage.getItem('videoTime');
+            if (savedTime) {
+                video.currentTime = parseFloat(savedTime);
+            }
+        });
+
+        // Guardar tiempo del video antes de volver a index.html
+        document.querySelector('a[href="index.html"]').addEventListener('click', function(e) {
+            const video = document.getElementById('background-video');
+            localStorage.setItem('videoTime', video.currentTime);
+        });
+    </script>
 </body>
 </html>

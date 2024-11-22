@@ -51,5 +51,21 @@
         </div>
     </div>
     <script src="js/scripts.js"></script>
+    <script>
+        // Cargar el tiempo guardado del video
+        window.addEventListener('load', function() {
+            const video = document.getElementById('background-video');
+            const savedTime = localStorage.getItem('videoTime');
+            if (savedTime) {
+                video.currentTime = parseFloat(savedTime);
+            }
+        });
+
+        // Guardar tiempo del video antes de cambiar de página
+        document.querySelector('a[href="registro.html"]').addEventListener('click', function(e) {
+            const video = document.getElementById('background-video');
+            localStorage.setItem('videoTime', video.currentTime);
+        });
+    </script>
 </body>
 </html>
