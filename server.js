@@ -198,43 +198,29 @@ app.post('/eventos', requireLogin, requireAdmin, upload.single('eventImage'), (r
     // Determinar la ruta de la imagen
     let imagenPath = 'https://i.ibb.co/RgPTxQk/default.jpg'; // imagen por defecto
     if (req.file) {
-        // Construir la ruta relativa para la imagen subida
         imagenPath = '/uploads/' + req.file.filename;
     }
-    
-    console.log('Insertando evento con datos:', {
-        titulo,
-        descripcion,
-        fecha,
-        hora,
-        lugar,
-        imagen: imagenPath,
-        creador_id: req.session.userId
-    });
 
-    db.run(`INSERT INTO eventos (titulo, descripcion, fecha, hora, lugar, imagen, creador_id) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    // Insertar el evento en la base de datos
+    db.run(
+        'INSERT INTO eventos (titulo, descripcion, fecha, hora, lugar, imagen, creador_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
         [titulo, descripcion, fecha, hora, lugar, imagenPath, req.session.userId],
         function(err) {
             if (err) {
-                console.error('Error detallado al crear el evento:', err);
-                return res.status(500).json({ error: 'Error al crear el evento: ' + err.message });
+                console.error('Error al crear evento:', err);
+                return res.status(500).json({ error: 'Error al crear el evento en la base de datos' });
             }
-            const nuevoEvento = {
-                id: this.lastID,
-                titulo,
-                descripcion,
-                fecha,
-                hora,
-                lugar,
-                imagen: imagenPath
-            };
-            console.log('Evento creado exitosamente:', nuevoEvento);
-            res.json({ 
-                success: true, 
-                evento: nuevoEvento
+            
+            // Devolver el evento creado
+            db.get('SELECT * FROM eventos WHERE id = ?', [this.lastID], (err, evento) => {
+                if (err) {
+                    console.error('Error al recuperar el evento creado:', err);
+                    return res.status(500).json({ error: 'Error al recuperar el evento creado' });
+                }
+                res.status(201).json(evento);
             });
-        });
+        }
+    );
 });
 
 app.delete('/eventos/:id', requireLogin, requireAdmin, (req, res) => {

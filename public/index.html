@@ -9,11 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <video autoplay muted loop id="background-video">
-        <source src="Video/Video Proyecto UTP.mp4" type="video/mp4">
-        Tu navegador no soporta videos HTML5.
-    </video>
-    <div class="video-overlay"></div>
     <div class="container">
         <div class="login-container">
             <!-- Formulario de inicio de sesión -->
@@ -52,19 +47,8 @@
     </div>
     <script src="js/scripts.js"></script>
     <script>
-        // Cargar el tiempo guardado del video
-        window.addEventListener('load', function() {
-            const video = document.getElementById('background-video');
-            const savedTime = localStorage.getItem('videoTime');
-            if (savedTime) {
-                video.currentTime = parseFloat(savedTime);
-            }
-        });
-
         // Guardar tiempo del video antes de cambiar de página
         document.querySelector('a[href="registro.html"]').addEventListener('click', function(e) {
-            const video = document.getElementById('background-video');
-            localStorage.setItem('videoTime', video.currentTime);
         });
     </script>
 </body>

@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fechaInput.min = today;
 
     // Asegurar que el modal esté oculto al cargar
-    modal.style.display = 'flex';
-    modal.classList.remove('active');
+    modal.style.display = 'none';
 
     // Cargar eventos al iniciar
     loadEvents();
@@ -23,27 +22,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para abrir el modal
     function openModal() {
         modal.style.display = 'flex';
-        // Trigger reflow para asegurar la transición
-        modal.offsetHeight;
-        modal.classList.add('active');
         eventForm.reset();
         fechaInput.min = today;
         document.body.style.overflow = 'hidden';
         // Enfocar el primer campo del formulario
         setTimeout(() => {
             document.getElementById('titulo').focus();
-        }, 300); // Esperar a que termine la transición
+        }, 100);
     }
 
     // Función para cerrar el modal
     function closeModal() {
-        modal.classList.remove('active');
+        modal.style.display = 'none';
         document.body.style.overflow = '';
         eventForm.reset();
-        // Esperar a que termine la transición antes de ocultar
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
     }
 
     // Abrir modal con el botón
@@ -53,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     closeButton.addEventListener('click', closeModal);
 
     // Cerrar modal al hacer clic fuera de él
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', (event) => {
         if (event.target === modal) {
             closeModal();
         }
@@ -69,6 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manejar envío del formulario
     eventForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+
+        // Mostrar mensaje de carga
+        const submitButton = eventForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Creando evento...';
+        submitButton.disabled = true;
 
         const formData = new FormData();
         formData.append('titulo', document.getElementById('titulo').value);
@@ -88,19 +86,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: formData
             });
 
+            const result = await response.json();
+
             if (response.ok) {
-                const result = await response.json();
                 console.log('Evento creado:', result);
+                // Mostrar mensaje de éxito
+                alert('Evento creado exitosamente');
                 closeModal();
                 loadEvents(); // Recargar eventos
             } else {
-                const error = await response.json();
-                console.error('Error al crear evento:', error);
-                alert('Error al crear el evento: ' + (error.error || 'Error desconocido'));
+                console.error('Error al crear evento:', result);
+                alert('Error al crear el evento: ' + (result.error || 'Error desconocido'));
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Error al crear el evento');
+            alert('Error al crear el evento: ' + error.message);
+        } finally {
+            // Restaurar el botón
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
         }
     });
 
