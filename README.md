@@ -1,34 +1,35 @@
-# 🎓 UTP Event Management System
+[![eventos.png](https://i.postimg.cc/vHt4LFhf/eventos.png)](https://postimg.cc/fJkWDP6R)
 
-This is a web-based system for managing events at the Universidad Tecnológica de Panamá (UTP). It allows administrators to create and manage events, while users can view and register for available events.
+# 🎓 Sistema de Gestión de Eventos UTP
 
-## 🔑 Quick Access
+Sistema web para la gestión de eventos de la Universidad Tecnológica de Panamá (UTP). Permite a los administradores crear y gestionar eventos, mientras que los usuarios pueden ver y registrarse en los eventos disponibles.
 
-**Admin Login:**
-- Username: admin
-- Password: 123456
+## 🔑 Acceso Rápido
 
-## 🚀 Getting Started
+**Acceso Administrador:**
+- Usuario: admin
+- Contraseña: 123456
 
-### For Users
-1. Create an account or log in if you already have one
-2. Browse available events
-3. Click on any event to see more details
-4. Use the "Register" button to sign up for events
-5. View your registered events in "My Events" section
+## 🚀 Comenzando
 
-### For Administrators
-1. Log in with admin credentials
-2. Create new events using the "Create Event" button
-3. Manage existing events (edit or delete)
-4. View all registered users for each event
+### Para Usuarios
+1. Crea una cuenta o inicia sesión
+2. Explora los eventos disponibles
+3. Haz clic en cualquier evento para ver más detalles
+4. Utiliza el botón "Registrarse" para inscribirte en los eventos
+5. Visualiza tus eventos registrados en la sección "Mis Eventos"
 
-## 📋 Installation (For Developers)
+### Para Administradores
+1. Inicia sesión con las credenciales de administrador
+2. Crea nuevos eventos usando el botón "Crear Evento"
+3. Elimina eventos existentes cuando sea necesario
 
-1. Install [Node.js](https://nodejs.org/) (version 14.0 or higher)
-2. Run these commands in your terminal:
+## 📋 Instalación
+
+1. Instala [Node.js](https://nodejs.org/) (versión 14.0 o superior)
+2. Ejecuta estos comandos en tu terminal:
    ```bash
    npm install
    npm start
    ```
-3. Open `http://localhost:3000` in your browser
+3. Abre `http://localhost:3000` en tu navegador
