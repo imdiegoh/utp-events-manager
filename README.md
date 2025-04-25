@@ -26,10 +26,42 @@ Sistema web para la gestión de eventos de la Universidad Tecnológica de Panam�
 
 ## 📋 Instalación
 
+### Requisitos Previos
 1. Instala [Node.js](https://nodejs.org/) (versión 14.0 o superior)
+2. Instala [SQLite](https://www.sqlite.org/download.html)
+
+### Configuración del Proyecto
+1. Clona o descarga este repositorio
 2. Ejecuta estos comandos en tu terminal:
    ```bash
    npm install
    npm start
    ```
 3. Abre `http://localhost:3000` en tu navegador
+
+## 🔄 Control de Versiones
+
+Para subir cambios a GitHub:
+
+1. Si es la primera vez:
+   ```bash
+   git init
+   git add .
+   git commit -m "Commit inicial"
+   git branch -M main
+   git remote add origin [URL-de-tu-repositorio]
+   git push -u origin main
+   ```
+
+2. Para actualizaciones posteriores:
+   ```bash
+   git add .
+   git commit -m "Descripción de los cambios"
+   git push
+   ```
+
+### ⚠️ Nota
+Asegúrate de no incluir información sensible en el repositorio. El archivo `.gitignore` está configurado para excluir:
+- node_modules/
+- .env (archivos de configuración)
+- uploads/ (archivos subidos por usuarios)
